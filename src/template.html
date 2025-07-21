@@ -6,20 +6,27 @@
     <title>Weather App</title>
   </head>
   <body>
+    <div class="nav-container">
+      <div>Weather App</div>
+      <nav>
+        <ul>
+          <li><button class="metric">°C</button></li>
+          <li><button class="us">°F</button></li>
+        </ul>
+      </nav>
+    </div>
+
     <div class="main">
-      <div class="nav-container">
-        <div>Weather App</div>
-        <nav>
-          <ul>
-            <li><button class="metric">°C</button></li>
-            <li><button class="us">°F</button></li>
-          </ul>
-        </nav>
-      </div>
       <div class="first-container">
         <input class="input" type="text" placeholder="Search..." />
       </div>
-      <div class="main-container">
+      <div class="loader-container">
+        <div id="loader" class="loader-hidden">
+          <!-- Add your loading animation elements here (e.g., spinner, text) -->
+          <div class="spinner"></div>
+        </div>
+      </div>
+      <div id="content" class="main-container content-hidden">
         <div>
           <div class="loc"></div>
           <div class="degree-image">

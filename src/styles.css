@@ -7,9 +7,9 @@
   --hover-color: #131d35;
   --linear-background: linear-gradient(
     180deg,
-    rgba(15, 23, 42, 1) 53%,
-    rgba(12, 34, 89, 1) 86%,
-    rgba(19, 47, 112, 1) 100%
+    rgba(15, 23, 42, 1) 47%,
+    rgba(7, 16, 41, 1) 91%,
+    rgba(2, 8, 23, 1) 100%
   );
 }
 * {
@@ -71,14 +71,14 @@ button:hover {
     rgba(7, 16, 41, 1) 91%,
     rgba(2, 8, 23, 1) 100%
   );
-  border: 0.1px solid transparent;
+
   min-height: 100vh;
 }
 
 .main-container {
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 50vw;
   margin: auto;
   background-color: transparent;
 }
@@ -126,6 +126,12 @@ button:hover {
   width: 30px;
   height: 30px;
   background-color: var(--card-background-color);
+}
+.small-image:hover {
+  background-color: var(--hover-color);
+  .flex-hourly-container {
+    background-color: var(--card-background-color);
+  }
 }
 
 .input {
@@ -214,6 +220,13 @@ button:hover {
   border-radius: 10px;
 }
 
+.flex-hourly-container:hover {
+  background-color: var(--hover-color);
+  .small-image {
+    background-color: var(--hover-color);
+  }
+}
+
 .flex-hourly-container div {
   background-color: transparent;
   width: 50px;
@@ -248,8 +261,87 @@ button:hover {
   text-align: end;
 }
 
-.notfound {
-  text-align: center;
-  font-weight: bold;
-  font-size: 2rem;
+.loader-container {
+  display: flex;
+  align-items: center;
+  margin: auto;
+  justify-content: center;
+}
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loader-hidden {
+  display: none; /* or visibility: hidden; opacity: 0; */
+}
+
+.content-hidden {
+  display: none;
+}
+
+@media only screen and (max-width: 1600px) {
+  .nav-container {
+    margin: auto;
+    width: 70%;
+    font-size: 1rem;
+  }
+  .main-container {
+    width: 70vw;
+  }
+}
+
+@media only screen and (max-width: 1366px) {
+  .nav-container {
+    margin: auto;
+    width: 80%;
+    font-size: 1rem;
+  }
+  .main-container {
+    width: 80vw;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .nav-container {
+    margin: auto;
+    width: 90%;
+    font-size: 1rem;
+  }
+  .main-container {
+    width: 90vw;
+  }
+}
+@media only screen and (max-width: 768) {
+  .nav-container {
+    margin: auto;
+    width: 90%;
+    font-size: 1rem;
+  }
+  .main-container {
+    width: 90vw;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .nav-container {
+    margin: auto;
+    width: 90%;
+    font-size: 1rem;
+  }
+  .main-container {
+    width: 90vw;
+  }
 }

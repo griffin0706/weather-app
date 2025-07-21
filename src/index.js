@@ -23,15 +23,27 @@ const visibilty = document.querySelector(".visibilty");
 const dew = document.querySelector(".dew");
 const dailyContainer = document.querySelector(".daily-container");
 const hourlyContainer = document.querySelector(".hourly-container");
+const loader = document.getElementById("loader");
+const content = document.getElementById("content");
 
 let locSearch = "manila";
 let usFMiles = "us";
 let metricCkm = "metric";
 let dataUnits = metricCkm;
 
+function showLoader() {
+  loader.classList.remove("loader-hidden");
+  content.classList.add("content-hidden"); // Hide content while loading
+}
+
+function hideLoader() {
+  loader.classList.add("loader-hidden");
+  content.classList.remove("content-hidden"); // Show content after loading
+}
+
 async function fetchAPI() {
   const apiKey = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${locSearch}?unitGroup=${dataUnits}&key=7KCFQQKUUU7SRPWKZB6ALPHGE&contentType=json`;
-  console.log(apiKey);
+  showLoader();
   try {
     const response = await fetch(apiKey, { mode: "cors" });
     if (!response.ok) {
@@ -43,6 +55,8 @@ async function fetchAPI() {
   } catch (error) {
     console.log(error.message);
     alert("Location not found!");
+  } finally {
+    hideLoader();
   }
 }
 
@@ -54,20 +68,25 @@ input.addEventListener("keydown", (e) => {
     if (!locSearch) {
       alert("Enter Location");
     } else {
+      showLoader();
       fetchAPI();
     }
   }
 });
 
-us.addEventListener("click", (e) => {
-  e.preventDefault();
+us.addEventListener("click", () => {
   dataUnits = usFMiles;
+  metric.style.backgroundColor = "#0f172a";
+  us.style.backgroundColor = "#131d35";
+  showLoader();
   fetchAPI();
 });
 
-metric.addEventListener("click", (e) => {
-  e.preventDefault();
+metric.addEventListener("click", () => {
   dataUnits = metricCkm;
+  metric.style.backgroundColor = "#131d35";
+  us.style.backgroundColor = "#0f172a";
+  showLoader();
   fetchAPI();
 });
 
@@ -130,7 +149,7 @@ const getLocation = (location) => {
   arrHours.forEach((element, index) => {
     const elementHours = new Date(`0001-01-01 ${element.datetime}`);
     let elCurrentHours = elementHours.getHours();
-    if (elCurrentHours > currentHours) {
+    if (elCurrentHours >= currentHours) {
       let ampm = elCurrentHours >= 12 ? "PM" : "AM";
       let elHour = elCurrentHours % 12;
 
@@ -140,7 +159,10 @@ const getLocation = (location) => {
       flexHourlyContainer.classList.add("flex-hourly-container");
 
       const hour = document.createElement("div");
-      hour.textContent = `${elHour} ${ampm}`;
+      hour.textContent = `${
+        index == currentHours ? "Now" : elHour + " " + ampm
+      }`;
+
       flexHourlyContainer.appendChild(hour);
 
       const image = document.createElement("img");
