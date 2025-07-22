@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+  <script defer src="main.js"></script></head>
+  <body>
+    <div class="nav-container">
+      <div>Weather App</div>
+      <nav>
+        <ul>
+          <li><button class="metric">°C</button></li>
+          <li><button class="us">°F</button></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="main">
+      <div class="first-container">
+        <input class="input" type="text" placeholder="Search..." />
+      </div>
+      <div class="loader-container">
+        <div id="loader" class="loader-hidden">
+          <!-- Add your loading animation elements here (e.g., spinner, text) -->
+          <div class="spinner"></div>
+        </div>
+      </div>
+      <div id="content" class="main-container content-hidden">
+        <div>
+          <div class="loc"></div>
+          <div class="degree-image">
+            <div class="degree"></div>
+
+            <img alt="weather icon" class="image" />
+          </div>
+          <div class="conditions"></div>
+          <div class="descriptions"></div>
+        </div>
+
+        <div class="air-conditions-container">
+          <div class="caption">Air Conditions</div>
+          <div class="grid-container">
+            <div class="item-container">
+              <div class="item-name">Feels Like</div>
+              <div class="feelslike bold">0</div>
+            </div>
+            <div class="item-container">
+              <div class="item-name">Humidity</div>
+              <div class="humidity bold">0</div>
+            </div>
+            <div class="item-container">
+              <div class="item-name">Wind Speed</div>
+              <div class="windSpeed bold">0</div>
+            </div>
+            <div class="item-container">
+              <div class="item-name">UV Index</div>
+              <div class="uvIndex bold">0</div>
+            </div>
+            <div class="item-container">
+              <div class="item-name">Visibilty</div>
+              <div class="visibilty bold">0</div>
+            </div>
+            <div class="item-container">
+              <div class="item-name">Dew Point</div>
+              <div class="dew bold">0</div>
+            </div>
+          </div>
+        </div>
+        <div class="hourly-forecast-container">
+          <div class="caption">HOURLY FORECAST</div>
+          <div class="hourly-container"></div>
+        </div>
+        <div class="daily-forecast-container">
+          <div class="caption">10-DAY FORECAST</div>
+          <div class="daily-container"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
